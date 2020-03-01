@@ -35,6 +35,7 @@ gem 'devise'
 
 group :development, :test do
   gem 'pry'
+  gem 'factory_bot_rails'
 end
 
 group :development do

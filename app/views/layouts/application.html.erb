@@ -11,8 +11,12 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container">
@@ -31,12 +35,14 @@
           </ul>
           <p class="navbar-text float-right">
             <% if user_signed_in? %>
-              Logged in as <strong><%= current_user.username %></strong>
+              <span id="signed-in-user">
+                Logged in as <strong><%= current_user.username %></strong>
+              </span>
               <%= link_to "Edit profile", edit_user_registration_path, class: "navbar-link" %>
-              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-link" %>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "navbar-link", id: "nav-sign-out" %>
             <% else %>
               <%= link_to "Sign up", new_user_registration_path, class: "navbar-link", id: "nav-sign-up" %> |
-              <%= link_to "Login", new_user_session_path, class: "navbar-link" %>
+              <%= link_to "Login", new_user_session_path, class: "navbar-link", id: "nav-sign-in" %>
             <% end %>
           </p>
         </div>
@@ -59,4 +65,3 @@
 
   </body>
 </html>
-
