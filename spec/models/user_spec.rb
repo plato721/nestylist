@@ -29,4 +29,15 @@ RSpec.describe User, type: :model do
       expect(retrieved_user.password).to_not eq("moses")
     end
   end
+
+  context "items - " do
+    it "can have many" do
+      items = create_list :item, 2
+      user = create :user
+
+      user.items << items
+
+      expect(user.items).to match_array(items)
+    end
+  end
 end

@@ -15,4 +15,14 @@ describe Item do
       expect(@item.name).to_not be_blank
     end
   end
+
+  it 'can have a user' do
+    user = create :user
+    item = create :item
+
+    item.user = user
+    item.save
+
+    expect(item.user).to eq(user)
+  end
 end
