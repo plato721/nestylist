@@ -49,4 +49,11 @@ describe Item do
     expect(items.all? { |item| item.valid?} ).to be_truthy
     expect(items.all? { |item| item.name == 'green eggs' }).to be_truthy
   end
+
+  it "is not unique via case sensisivity" do
+    item = create :item, name: 'ham'
+    item_2 = Item.new(name: 'Ham')
+
+    expect(item_2).to_not be_valid
+  end
 end
