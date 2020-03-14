@@ -4,4 +4,8 @@ class Item < ApplicationRecord
   validates :name, uniqueness: { scope: :user,
     message: "must be unique", case_sensitive: false
   }
+
+  scope :items_for, ->(user) {
+    where(user: user)
+  }
 end
