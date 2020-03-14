@@ -56,4 +56,39 @@ describe Item do
 
     expect(item_2).to_not be_valid
   end
+
+  context "scopes: " do
+    describe ".items_for(user) - " do
+      let(:user_1){ create(:user) }
+      let(:user_2){ create(:user) }
+
+      it "scopes to the user" do
+        items = create_list(:item, 2, user: user_1)
+
+        user_1_items = described_class.items_for(user_1)
+        user_2_items = described_class.items_for(user_2)
+
+        expect(user_1_items).to match_array(items)
+        expect(user_2_items).to be_blank
+
+        user_1_items.each do |item|
+          expect(item.user).to eq(user_1)
+        end
+      end
+
+      it "scopes to another user" do
+        items = create_list(:item, 3, user: user_2)
+
+        user_1_items = described_class.items_for(user_1)
+        user_2_items = described_class.items_for(user_2)
+
+        expect(user_1_items).to be_blank
+        expect(user_2_items).to match_array(items)
+
+        user_2_items.each do |item|
+          expect(item.user).to eq(user_2)
+        end
+      end
+    end
+  end
 end
