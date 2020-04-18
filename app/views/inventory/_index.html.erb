@@ -22,7 +22,7 @@
   </div>
 
   <div class="add-item-form" style="display:none;">
-    <%= form_with(url: inventory_index_path) do %>
+    <%= form_with(url: inventory_index_path, remote: true) do %>
       <%= text_field(:item, :name) %>
       <%= submit_tag "Add item" %>
     <% end %>
