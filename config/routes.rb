@@ -2,5 +2,5 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "landing#begin"
 
-  resources :inventory, only: [:index]
+  resources :inventory, only: [:index, :create]
 end
