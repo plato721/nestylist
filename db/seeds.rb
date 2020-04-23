@@ -11,3 +11,14 @@ if !Rails.env.production?
     password: 'Password1'
   })
 end
+
+####################################
+# SHOPS - places to buy things     #
+####################################
+
+Shop.create!(
+  name: "Any",
+  description: "Add your item to this shop if you want it to be seen on every shopping trip."
+)
+Shop.create!(name: "Wal Mart")
+Shop.create!(name: "Costco")
