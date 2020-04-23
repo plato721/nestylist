@@ -6,7 +6,7 @@ describe Test::UsersController, type: :controller do
     allow(Rails.env).to receive(:development?){ false }
 
     expect{
-      get :clear_users, xhr: true
-    }.to raise_error(StandardError)
+      get :destroy_username, params: { username: 'moses' }, xhr: true
+    }.to raise_error(SecurityError)
   end
 end

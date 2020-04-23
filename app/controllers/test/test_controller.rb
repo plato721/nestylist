@@ -5,6 +5,8 @@ class Test::TestController < ActionController::Base
 
   private
   def crash_if_not_test
-    raise StandardError, "No." unless Rails.env.development? || Rails.env.test?
+    if !(Rails.env.development? || Rails.env.test?)
+      raise SecurityError, "Verbotten"
+    end
   end
 end
