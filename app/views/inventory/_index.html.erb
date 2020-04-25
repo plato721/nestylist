@@ -1,0 +1,43 @@
+<div class="inventory-main">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>
+          Items
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td>
+            <%= item.name %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+    <button class="add-item" data-cy="add-item" onclick="addItemHandler()">+</button>
+  </div>
+
+  <div class="add-item-form" style="display:none;">
+    <%= form_with(url: inventory_index_path, remote: true) do %>
+      <%= text_field(:item, :name) %>
+      <%= submit_tag "Add item" %>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  function addItemHandler() {
+    $('.add-item-form').toggle('hidden');
+    $('#item_name').focus();
+  }
+</script>
+
+<style>
+  .add-item-form {
+    margin-top: 1em;
+  }
+</style>

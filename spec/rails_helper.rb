@@ -3,6 +3,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
+require 'rake'
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 # Rails is not loaded until this point!
 
@@ -25,6 +26,8 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
+    Nestylist::Application.load_tasks
+    Rake::Task["db:seed"].invoke
   end
 
   config.around(:each) do |example|
