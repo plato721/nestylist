@@ -1,4 +1,4 @@
-# README
+## Nestylist
 
 This is a work-in-progress. This is an app meant to solve my dual-grocery list problem (between Costco/All-stores-but-Costco). I want to be able to assess the inventory, then go shop. Waiting in line at Costco I saw the person in front of me had a divided list like mine, and decided it was time.
 
