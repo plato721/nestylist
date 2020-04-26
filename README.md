@@ -18,14 +18,14 @@ ruby 2.6.3, rails 5.2.3
 
 * Database creation/initialization
   - Install postgresql
-  - rails db:setup
+  - `rails db:setup`
 
 * How to run the test suite
   - RSpec:
     - `rspec spec`
   - Cypress:
     - Ensure cypress is installed:
-    `./node_modules/cypress/bin/cypress open`
+    - `./node_modules/cypress/bin/cypress open`
 
 * Services (job queues, cache servers, search engines, etc.)
 
