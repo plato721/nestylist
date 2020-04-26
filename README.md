@@ -9,28 +9,23 @@ I've since discovered at least one list app that does the job, but this is a goo
 ruby 2.6.3, rails 5.2.3
 
 * System dependencies
-
-- postgresql
-
-For testing:
-- node/npm
-- cypress
+  - postgresql
+  - For testing:
+    - node/npm
+    - cypress
 
 * Configuration
 
 * Database creation/initialization
-
-- Install postgresql
-- rails db:setup
+  - Install postgresql
+  - rails db:setup
 
 * How to run the test suite
-
-RSpec:
-- rspec spec
-
-Cypress:
-Ensure cypress is installed
-`./node_modules/cypress/bin/cypress open`
+  - RSpec:
+    - `rspec spec`
+  - Cypress:
+    - Ensure cypress is installed:
+    `./node_modules/cypress/bin/cypress open`
 
 * Services (job queues, cache servers, search engines, etc.)
 
