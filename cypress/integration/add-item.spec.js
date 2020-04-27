@@ -2,6 +2,7 @@ describe('Add item to list', ()=>{
   it('adds an item', ()=>{
     cy.login()
 
+    cy.visit('/')
     cy.get('[data-cy=inventory]').click()
     cy.get('[data-cy=add-item]').click()
     cy.focused()

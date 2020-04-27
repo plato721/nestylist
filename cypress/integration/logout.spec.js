@@ -2,6 +2,7 @@ describe('Logout', () => {
   it('can sign out once signed in', () => {
     cy.login()
 
+    cy.visit('/')
     // were we ever logged in? check
     cy.get('body')
       .should('contain', 'honestabe')
