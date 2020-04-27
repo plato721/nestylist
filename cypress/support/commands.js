@@ -24,14 +24,29 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
-
-
-// Yeah I know you're not supposed to do it this way. But, how are you supposed
-// to do it? Until I know that, there's this.
+// This logs in without rendering the login form. Use method in login.spec
+// for interactive login.
 Cypress.Commands.add('login', () => {
-  cy.visit('/')
-  cy.get('#nav-sign-in').click()
-  cy.get('#user_login').type('honestabe')
-  cy.get('#user_password').type('Password1')
-  cy.get('input[type=submit]').click()
+    cy.request({
+    url:'/users/sign_in',
+    method:'get'
+  })
+  .its('body')
+  .then((body) => {
+    const $form = Cypress.$(body).find('form')
+    const authToken = $form.find('[name="authenticity_token"]').attr('value')
+    cy.request({
+      url:'/users/sign_in',
+      method:'post',
+      form:true,
+      body:{
+        utf8:'✓',
+        authenticity_token:authToken,
+        user:{
+          login:'honestabe',
+          password:'Password1',
+        }
+      }
+    })
+  })
 })
