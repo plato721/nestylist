@@ -39,7 +39,7 @@ describe Item do
     expect(item2).to_not be_valid
   end
 
-  it "is not unqiue between user" do
+  it "is not unique between user" do
     users = create_list :user, 2
     item = create :item, name: 'green eggs', user: users.first
     item_2 = build :item, name: 'green eggs', user: users.second
@@ -50,7 +50,7 @@ describe Item do
     expect(items.all? { |item| item.name == 'green eggs' }).to be_truthy
   end
 
-  it "is not unique via case sensisivity" do
+  it "is not unique via case sensitivity" do
     item = create :item, name: 'ham'
     item_2 = Item.new(name: 'Ham')
 
